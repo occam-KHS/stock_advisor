@@ -9,9 +9,10 @@ import FinanceDataReader as fdr
 from pathlib import Path
 pkl_path = Path(__file__).parents[1]
 file_path = str(pkl_path.cwd()) + str("\\")
+print(file_path)
 # decision_date = input("오늘 정보를 기반으로 내일 매수할 종목을 추천합니다. 오늘 날짜를 YYYY-MM-DD 형태로 입력하세요: ")
-kosdaq_list = pd.read_pickle(file_path + 'kosdaq_code.pkl')
-# kosdaq_list = fdr.StockListing('KOSDAQ').rename(columns={'Symbol':'code','Name':'name'})
+# kosdaq_list = pd.read_pickle(file_path + 'kosdaq_code.pkl')
+kosdaq_list = fdr.StockListing('KOSDAQ').rename(columns={'Symbol':'code','Name':'name'})
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
