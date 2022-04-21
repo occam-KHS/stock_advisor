@@ -8,7 +8,11 @@ import pandas as pd
 import numpy as np
 import pickle
 
-with open('rf', 'rb') as file:
+from pathlib import Path
+pkl_path = Path(__file__).parents[1]
+file_path = str(pkl_path.cwd()) + str("\\")
+
+with open(file_path + 'rf', 'rb') as file:
     rf = pickle.load(file)
 
 # Get the data from Nave Chart

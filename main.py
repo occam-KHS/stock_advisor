@@ -6,10 +6,12 @@ import streamlit as st
 import glob
 import datetime
 import FinanceDataReader as fdr
-
+from pathlib import Path
+pkl_path = Path(__file__).parents[1]
+file_path = str(pkl_path.cwd()) + str("\\")
 # decision_date = input("오늘 정보를 기반으로 내일 매수할 종목을 추천합니다. 오늘 날짜를 YYYY-MM-DD 형태로 입력하세요: ")
-# kosdaq_list = pd.read_pickle('kosdaq_code.pkl')
-kosdaq_list = fdr.StockListing('KOSDAQ').rename(columns={'Symbol':'code','Name':'name'})
+kosdaq_list = pd.read_pickle(file_path + 'kosdaq_code.pkl')
+# kosdaq_list = fdr.StockListing('KOSDAQ').rename(columns={'Symbol':'code','Name':'name'})
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -29,8 +31,8 @@ if __name__ == '__main__':
 
     if decision_date:
 
-        if glob.glob('kq_selection_' + decision_date +'.pkl'):
-            kq_selection = pd.read_pickle('kq_selection_' + decision_date + '.pkl')
+        if glob.glob(file_path + 'kq_selection_' + decision_date +'.pkl'):
+            kq_selection = pd.read_pickle(file_path + 'kq_selection_' + decision_date + '.pkl')
             st.write(kq_selection.sort_values(by='yhat', ascending=False))
 
         elif time_now > datetime.datetime.strptime(decision_date, '%Y-%m-%d') + datetime.timedelta(hours=7):

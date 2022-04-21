@@ -16,7 +16,7 @@ import pickle
 decision_date = input("오늘 정보를 기반으로 내일 매수할 종목을 추천합니다. 오늘 날짜를 YYYY-MM-DD 형태로 입력하세요: ")
 
 # 코스닥 종목 리스트 - 루프 돌릴때 필요
-kosdaq_list = pd.read_pickle('kosdaq_code.pkl')
+# kosdaq_list = pd.read_pickle('kosdaq_code.pkl')
 
 # # 모델에 들어갈 데이터 만들기 위한 20 퍼센타일 값 구분
 # with open('C:\\Xing_api\\Program_Garden\\bins_dict', 'rb') as file:
@@ -26,7 +26,11 @@ kosdaq_list = pd.read_pickle('kosdaq_code.pkl')
 # with open('C:\\Xing_api\\Program_Garden\\classifier', 'rb') as file:
 #     classifier = pickle.load(file)
 
-with open('rf', 'rb') as file:
+from pathlib import Path
+pkl_path = Path(__file__).parents[1]
+file_path = str(pkl_path.cwd()) + str("\\")
+
+with open(file_path + 'rf', 'rb') as file:
     rf = pickle.load(file)
 
 # Get the data from Nave Chart
