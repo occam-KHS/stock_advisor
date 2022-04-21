@@ -61,8 +61,8 @@ if __name__ == '__main__':
             outcome_all = kq.strategy_implement(return_all, kosdaq_list, decision_date)
             kq_selection = outcome_all[outcome_all['select'] == 1][['code', 'name', 'buy_price', 'yhat']]
 
-            kq_selection.to_pickle('kq_selection_' + decision_date +'.pkl')
-            kq_selection = pd.read_pickle('kq_selection_' + decision_date +'.pkl')
+            kq_selection.to_pickle(file_path + 'kq_selection_' + decision_date +'.pkl')
+            kq_selection = pd.read_pickle(file_path + 'kq_selection_' + decision_date +'.pkl')
             st.write(kq_selection.sort_values(by='yhat', ascending=False))
 
         else:
