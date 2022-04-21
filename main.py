@@ -5,10 +5,11 @@ import numpy as np
 import streamlit as st
 import glob
 import datetime
+import FinanceDataReader as fdr
 
 # decision_date = input("오늘 정보를 기반으로 내일 매수할 종목을 추천합니다. 오늘 날짜를 YYYY-MM-DD 형태로 입력하세요: ")
-kosdaq_list = pd.read_pickle('kosdaq_code.pkl')
-
+# kosdaq_list = pd.read_pickle('kosdaq_code.pkl')
+kosdaq_list = fdr.StockListing('KOSDAQ').rename(columns={'Symbol':'code','Name':'name'})
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
