@@ -14,7 +14,7 @@ print(file_path)
 # kosdaq_list = pd.read_pickle(file_path + 'kosdaq_code.pkl')
 kosdaq_list = fdr.StockListing('KOSDAQ').rename(columns={'Symbol':'code','Name':'name'})
 
-with open(file_path + 'rf', 'rb') as file:
+with open('rf', 'rb') as file:
     rf = pickle.load(file)
 
 # Press the green button in the gutter to run the script.
