@@ -6,6 +6,8 @@ import streamlit as st
 import glob
 import datetime
 import FinanceDataReader as fdr
+import pickle
+
 from pathlib import Path
 pkl_path = Path(__file__).parents[1]
 file_path = str(pkl_path.cwd()) + str("\\")
